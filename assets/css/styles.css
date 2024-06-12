@@ -2,6 +2,11 @@
     box-sizing: border-box;
 }
 
+/* Nơi tạo các biến môi trường dùng chung cho những phần sau */
+:root {
+    --header-bg: #10375c;
+}
+
 html {
     /* mặc định trình duyệt 16px để set cho font-size là 10px thì có công thức sau: 
      10 / 16 = 0.625 | 0.625 * 100 = 62.5% (62.5% tương đương là 10px)
@@ -15,4 +20,216 @@ body {
     */
     font-size: 1.6rem;
     font-family: "Sora", sans-serif;
+}
+
+/* Common - Các thành phần dùng chung */
+a {
+    text-decoration: none;
+}
+
+.container {
+    width: 1170px;
+    max-width: calc(
+        100% - 48px
+    ); /* Khi kích thước màn hình < 1170px thì sẽ chạy dòng max-width (48px là 2 khoảng cách bên trái phải mỗi bên 24px để nhìn thoáng hơn) */
+    margin: 0px auto; /* Căn phần tử nằm giữa */
+}
+
+.btn {
+    --height: 60px;
+
+    display: inline-block;
+    padding: 0 20px;
+    min-width: 205px;
+    height: var(--height);
+    line-height: var(--height);
+    font-size: 1.6rem;
+    font-weight: 400;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 99px;
+    background: #2e80ce;
+    border: 1px solid #2e80ce;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+/* Header */
+.header {
+    min-height: 100vh; /* cho phần header tràn hết ra ngoài màn hình */
+    background: var(--header-bg);
+    padding-top: 30px;
+}
+
+.logo {
+    position: relative;
+    display: inline-flex;
+    font-size: 1rem;
+    /* Để làm logo khi thay đổi kích thước thì các item nằm bên trong đều sẽ thay đổi kích thước theo và đảm bảo logo luôn đúng với tỷ lệ
+    ở thẻ CHA sử dụng giá trị có liên quan về kích thước như font-size, width, height là rem
+    ở các thẻ CON sử dụng giá trị có liên quan về kích thước như font-size, width, height là em */
+}
+
+/* Tạo ra logo bằng cách sử dụng các thuộc tính css*/
+.logo__circle::before,
+.logo__circle::after {
+    content: "";
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.logo__circle::before {
+    width: 3em;
+    height: 3em;
+    background: #2e80ce;
+}
+
+.logo__circle::after {
+    position: absolute;
+    top: 1.1em;
+    left: 1.1em;
+    width: 1.6em;
+    height: 1.6em;
+    background: #ffffff;
+}
+
+.logo__text {
+    margin-left: 0.6em;
+    text-align: right;
+    line-height: 1.6em;
+}
+
+.logo__branch {
+    display: block;
+    font-size: 1.8em;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.logo__branch--small {
+    font-size: 1.2em;
+    font-weight: 300;
+}
+
+/* Header Top */
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar__list {
+    display: flex;
+}
+
+.header--action__login,
+.navbar__link {
+    padding: 4px 21px;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: #c9d2da;
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+    color: #ffffff;
+    text-shadow: 1px 0 0 currentColor;
+}
+
+.navbar__link--active::before {
+    position: relative;
+    top: -2px;
+    left: -8px;
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ffffff;
+}
+
+.header-action {
+    display: flex;
+    align-items: center;
+}
+
+.header--action__login {
+    margin-right: 7px;
+}
+
+.header--action__signup {
+    --height: 44px;
+    min-width: 104px;
+}
+
+/* Hero */
+.hero {
+    display: flex;
+    align-items: center;
+    margin-top: 76px;
+}
+
+.hero__content {
+    flex-shrink: 0; /* cho item không bị co lại */
+    width: 44%;
+}
+
+.hero__media {
+    flex-grow: 1;
+}
+
+.hero__heading {
+    font-weight: 600;
+    font-size: 7rem;
+    line-height: 1.14; /* lấy gtri px của line-height (80px) / gtri px font-size (70px) = 1.14 */
+    color: #ffffff;
+    letter-spacing: -0.02em;
+}
+
+.hero__desc {
+    margin-top: 22px;
+    font-weight: 300;
+    font-size: 1.8rem;
+    line-height: 1.67;
+    color: #c9d2da;
+}
+
+.hero__now {
+    margin-top: 38px;
+    display: flex;
+    align-items: center;
+}
+
+.hero__phone {
+    margin-left: 38px;
+    font-size: 1.8rem;
+    line-height: 1.67;
+    color: #ffffff;
+}
+
+.hero__images {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.hero__img {
+    width: 330px;
+    height: 540px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.hero__img:first-child {
+    position: relative;
+    margin-right: -6px;
+}
+
+.hero__img:last-child {
+    width: 210px;
+    height: 410px;
+    /* last-child : áp dụng cho item hình ảnh cuối */
 }
