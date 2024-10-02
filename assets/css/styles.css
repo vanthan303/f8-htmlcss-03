@@ -69,8 +69,8 @@ a {
     display: inline-flex;
     font-size: 1rem;
     /* Để làm logo khi thay đổi kích thước thì các item nằm bên trong đều sẽ thay đổi kích thước theo và đảm bảo logo luôn đúng với tỷ lệ
-    ở thẻ CHA sử dụng giá trị có liên quan về kích thước như font-size, width, height là rem
-    ở các thẻ CON sử dụng giá trị có liên quan về kích thước như font-size, width, height là em */
+    ở thẻ "CHA" sử dụng giá trị có liên quan về kích thước như font-size, width, height là rem
+    ở các thẻ "CON" sử dụng giá trị có liên quan về kích thước như font-size, width, height là em */
 }
 
 /* Tạo ra logo bằng cách sử dụng các thuộc tính css*/
@@ -135,10 +135,12 @@ a {
 
 .navbar__link:hover,
 .navbar__link--active {
+    /* khi active vào menu thì các menu khác không bị giật giật di chuyển */
     color: #ffffff;
     text-shadow: 1px 0 0 currentColor;
 }
 
+/* Tạo ra dấu chấm kế menu Home */
 .navbar__link--active::before {
     position: relative;
     top: -2px;
@@ -174,11 +176,11 @@ a {
 
 .hero__content {
     flex-shrink: 0; /* cho item không bị co lại */
-    width: 44%;
+    width: 44%; /* lấy chiều rộng 517 trên figma / 1170px = 0.44 * 100 = 44% ra chiều rộng % của khối đó */
 }
 
 .hero__media {
-    flex-grow: 1;
+    flex-grow: 1; /* cho item hero__media chiếm lấy phần khoảng trống còn lại */
 }
 
 .hero__heading {
@@ -213,7 +215,7 @@ a {
 .hero__images {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-end; /* Đẩy item về sát bên phải */
 }
 
 .hero__img {
@@ -226,6 +228,7 @@ a {
 .hero__img:first-child {
     position: relative;
     margin-right: -6px;
+    /* first-child : áp dụng cho item hình ảnh cuối */
 }
 
 .hero__img:last-child {
